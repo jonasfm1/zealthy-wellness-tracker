@@ -1,0 +1,9 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+body {
+  background-color: #f4f6f9;
+  min-height: 100vh;
+  color: #2c3e50;
+  margin: 0;
+  padding: 0;
+}
