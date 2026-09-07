@@ -123,35 +123,35 @@ export default function DashboardPage() {
     <div className="container py-5">
       <div className="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
         <div>
-          <h1 className="fw-bold text-dark mb-1">Painel de Saúde</h1>
-          <p className="text-muted mb-0">Visão geral do seu acompanhamento Zealthy.</p>
+          <h1 className="fw-bold text-dark mb-1">Health Dashboard</h1>
+          <p className="text-muted mb-0">Overview of your Zealthy follow-up.</p>
         </div>
         <div className="d-flex gap-2">
           {/* Button to trigger the universal entry modal */}
           <Button variant="primary" onClick={() => setIsModalOpen(true)}>
-            + Adicionar Registro
+            + Add Record
           </Button>
           <Button variant="outline-primary" onClick={handleLogout}>
-            Sair
+            Logout
           </Button>
         </div>
       </div>
 
       <div className="row mb-4">
-        <MetricCard title="Água Consumida" value={waterLiters} unit="L" icon="💧" colorClass="text-info" />
-        <MetricCard title="Calorias Ingeridas" value={totalCalories} unit="kcal" icon="🍎" colorClass="text-danger" />
-        <MetricCard title="Tempo de Exercício" value={totalExercise} unit="min" icon="⏱️" colorClass="text-warning" />
-        <MetricCard title="Horas de Sono" value={externalData?.sleep || "---"} unit="hrs" icon="🌙" colorClass="text-primary" />
-        <MetricCard title="Passos Diários" value={externalData?.steps || "---"} unit="passos" icon="👟" colorClass="text-success" />
+        <MetricCard title="Water Consumed" value={waterLiters} unit="L" icon="💧" colorClass="text-info" />
+        <MetricCard title="Calories Consumed" value={totalCalories} unit="kcal" icon="🍎" colorClass="text-danger" />
+        <MetricCard title="Exercise Duration" value={totalExercise} unit="min" icon="⏱️" colorClass="text-warning" />
+        <MetricCard title="Hours of Sleep" value={externalData?.sleep || "---"} unit="hrs" icon="🌙" colorClass="text-primary" />
+        <MetricCard title="Daily Steps" value={externalData?.steps || "---"} unit="passos" icon="👟" colorClass="text-success" />
       </div>
 
       <div className="row mt-4">
         <div className="col-12 col-lg-8 mb-4">
           <WellnessChart 
-            title="Histórico de Hidratação"
-            labels={chartLabels.length > 0 ? chartLabels : ['Sem dados']}
+            title="Hydration History"
+            labels={chartLabels.length > 0 ? chartLabels : ['No Data']}
             dataValues={chartData.length > 0 ? chartData : [0]}
-            labelName="Litros Consumidos"
+            labelName="Liters Consumed"
             borderColor="rgba(13, 202, 240, 1)"
             backgroundColor="rgba(13, 202, 240, 0.1)"
           />
@@ -160,13 +160,13 @@ export default function DashboardPage() {
         <div className="col-12 col-lg-4 mb-4 d-flex flex-column gap-4">
           {/* External Sync Card */}
           <div className="card shadow-sm border-0 p-4 bg-white bg-opacity-75 text-center" style={{ backdropFilter: 'blur(10px)', borderRadius: '1rem' }}>
-            <h5 className="fw-bold text-secondary mb-3">Sincronização Externa</h5>
-            <p className="text-muted small">Busque dados consolidados através do proxy do back-end em Flask.</p>
+            <h5 className="fw-bold text-secondary mb-3">External Synchronization</h5>
+            <p className="text-muted small">Look for consolidated data</p>
             <Button variant="primary" className="mt-2" onClick={handleSync} disabled={isSyncing}>
               {isSyncing ? (
                 <>
                   <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                  Sincronizando...
+                  Synchronizing...
                 </>
               ) : (
                 'Sincronizar Dados'
@@ -176,7 +176,7 @@ export default function DashboardPage() {
 
           {/* Recent Journal Entries Section */}
           <div className="card shadow-sm border-0 p-4 bg-white bg-opacity-75" style={{ backdropFilter: 'blur(10px)', borderRadius: '1rem' }}>
-            <h5 className="fw-bold text-secondary mb-3">Diário Recente</h5>
+            <h5 className="fw-bold text-secondary mb-3">Recent Diary</h5>
             {recentJournals.length > 0 ? (
               recentJournals.map((journal: any) => (
                 <div key={journal.id} className="mb-2 pb-2 border-bottom">
@@ -185,7 +185,7 @@ export default function DashboardPage() {
                 </div>
               ))
             ) : (
-              <p className="text-muted small mb-0">Nenhum registro no diário ainda.</p>
+              <p className="text-muted small mb-0">No journal entries yet.</p>
             )}
           </div>
         </div>

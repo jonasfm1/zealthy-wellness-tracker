@@ -46,13 +46,13 @@ def get_step_data():
 @external_bp.route('/data', methods=['GET'])
 def get_aggregated_data():
     """
-    Rota consolidada para o front-end buscar sono e passos em uma única requisição.
+    Consolidated endpoint for the front-end to fetch sleep and step data in a single request.
     """
-    # Usando um email fixo para o teste (ajuste para o email usado no seu banco de dados)
+    # Using a fixed email for the test (adjust to the email used in your database)
     email = request.args.get('email', 'alice@example.com')
     
     try:
-        # Faz as requisições em paralelo para a API externa
+        # Makes parallel requests to the external API
         sleep_response = requests.get(f"{ZEALTHY_BASE_URL}/sleep_data", params={'email': email})
         step_response = requests.get(f"{ZEALTHY_BASE_URL}/step_data", params={'email': email})
         
@@ -60,7 +60,7 @@ def get_aggregated_data():
         step_data = step_response.json() if step_response.status_code == 200 else {}
         
         return jsonify({
-            # Tratando variações comuns nas chaves de retorno de APIs externas
+            # Handling common variations in external API response keys
             'sleep': sleep_data.get('sleep_hours', sleep_data.get('sleep', 7.5)),
             'steps': step_data.get('steps', step_data.get('step_count', 8430))
         }), 200

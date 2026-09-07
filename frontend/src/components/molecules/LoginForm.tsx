@@ -41,11 +41,11 @@ export const LoginForm: React.FC<LoginFormProps> = ({
     >
       <div className="text-center mb-4">
         <h2 className="fw-bold text-primary mb-1">Zealthy Wellness</h2>
-        <p className="text-muted small">Acompanhe suas métricas de saúde com facilidade</p>
+        <p className="text-muted small">Track your health metrics with ease.</p>
       </div>
 
       <h3 className="text-center mb-4 fw-bold text-dark">
-        {isRegistering ? 'Criar Nova Conta' : 'Acesso ao Painel'}
+        {isRegistering ? 'Create New Account' : 'Access the Dashboard'}
       </h3>
       
       {error && <div className="alert alert-danger py-2 text-center small">{error}</div>}
@@ -60,7 +60,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({
       />
       
       <Input 
-        label="Senha" 
+        label="password" 
         type="password" 
         value={password} 
         onChange={(e) => setPassword(e.target.value)} 
@@ -70,7 +70,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({
 
       <div className="mt-4">
         <Button type="submit" fullWidth disabled={loading}>
-          {loading ? 'Processando...' : (isRegistering ? 'Cadastrar e Entrar' : 'Entrar')}
+          {loading ? 'Processing...' : (isRegistering ? 'Sign Up and Log In' : 'access')}
         </Button>
       </div>
 
@@ -80,7 +80,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({
           className="btn btn-link text-decoration-none small text-muted"
           onClick={onToggleMode}
         >
-          {isRegistering ? 'Já tem uma conta? Faça login' : 'Não tem uma conta? Cadastre-se'}
+          {isRegistering ? 'Already have an account? Log in' : 'Do not have an account? Sign up.'}
         </button>
       </div>
     </form>
