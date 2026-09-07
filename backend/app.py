@@ -36,8 +36,8 @@ def create_app():
     app.register_blueprint(external_bp, url_prefix='/api/external')
 
     # Create tables if they don't exist
-    with app.app_context():
-        db.create_all()
+    # with app.app_context():
+    #    db.create_all()
 
     return app
 
